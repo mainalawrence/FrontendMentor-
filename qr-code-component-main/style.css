@@ -1,0 +1,45 @@
+@import url("https://fonts.google.com/specimen/Outfit");
+
+*{
+    margin: 0;
+
+font-weight: 400, 700;
+font-family: Outfit;
+
+}
+p{
+    font-size: 15px;
+}
+
+.container{
+  margin: auto;
+  width:100%;
+}
+
+/**mobile**/
+
+@media only screen and (max-width: 375px) {
+    body {
+      background-color: lightblue;
+    }
+    .photo{
+        background-image: url("desktop-design.jpg");
+    }
+  }
+
+  /**Desktop review**/
+
+  @media only screen and (min-width: 375px) and (max-width:1440px)  
+   {
+    .photo{
+        background-image: url("desktop-preview.jpg");
+    }
+  }
+  /*desktop design */
+
+
+  @media only screen and (max-width: 1440px) {
+    .photo{
+        background-image: url("desktop-design.jpg");
+    }
+  }
