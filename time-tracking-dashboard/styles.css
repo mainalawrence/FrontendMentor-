@@ -15,6 +15,7 @@
 }
 .r-top >h5{
    color: white;
+   
 }
 
 .container{
@@ -22,7 +23,7 @@
     padding-left: 4%;
     grid-template-columns:repeat(4,1fr);
     grid-template-rows:repeat(1,1fr);
-    gap: 1%;
+    gap: 2%;
 }
 .main-d{
     background-color: hsl(235, 46%, 20%); 
@@ -37,20 +38,25 @@ body{
     font-family: Rubik;
     background-color:  hsl(226, 43%, 10%);
     padding: 10%;
+    font-weight: 300, 400, 500;
 }
 .jeimg{
 width: 30%;
+margin-bottom: 10%;
 }
 .about{
     background-color:  hsl(246, 80%, 60%);
-    padding: 10%;
-    padding-right: 20%;
+    padding: 010% 20% 10% 20%;
     color: white;
 }
 .duration{
     padding-left: 10%;
     color: white;
     margin-top: 3%;
+}
+.about> h6{
+    opacity: 70%;
+    margin: 4% 0;
 }
 li{
     text-decoration: none;
@@ -80,6 +86,7 @@ li:hover{
     width: 100%;
     padding-right: 1%;
     grid-row:1/1;
+    margin-bottom:5% ;
    
 }
 .work{
@@ -89,6 +96,7 @@ li:hover{
     padding-right: 13%;
     padding-top: 10%;
     color: white;
+    margin-top: -20px;
 }
 .play{
     background-color: hsl(195, 74%, 62%) !important;
@@ -127,21 +135,45 @@ margin-left:5%;
     grid-column:4;
     grid-row: 2;  
 }
+.play-bg{
+    background-color: hsl(195, 74%, 62%);
+}
+.study-bg{
+    background-color:  hsl(348, 100%, 68%) !important;
+
+}
+.work-bg{
+    background-color:hsl(15, 100%, 70%) !important;
+
+}
+.exercise-bg{
+    background-color:  hsl(145, 58%, 55%) !important;
+
+}
+.social-bg{
+    background-color:  hsl(264, 64%, 52%);
+
+}
+.care-bg{
+    background-color: hsl(43, 84%, 65%);
+}
 
 @media screen and (max-width:375px){
-  body{
-      
-  }
+body{
+    width:100%;
+}
+.main-d{
+    width:100%;
+}
     .container{
        display: flex;
-       flex-direction: column;
-        gap: 1%;
-        width: 90% !important;
+       flex-direction: column;   
+    width: 80% !important;
     }
 }
 @media screen and( min-width:375px)  {
     .container{
-       
+        
         gap: 1%;
     }
 }
