@@ -65,8 +65,44 @@ p{
     font-size: 16px;
     margin: 2% 0;
 }
-@media screen and (max-with: 375px) {
-    .image-part{
-        background-image:url("./images/image-header-mobile.jpg");
+
+@media screen  and ( max-width:375px) {
+
+    body{
+       width: 90%;
     }
+    .image-part{
+        background-image:url("./images/image-header-mobile.jpg") !important;
+        opacity: 60%;
+        border-radius:10px;
+        background-repeat: no-repeat;
+        background-size:100% 100%;
+        width:100%;
+        grid-row:1;
+        grid-column: 1;
+        height: 200px;
+       
+    }
+    .container{
+        width:80%;
+        display:grid;
+        grid-template-rows:auto;
+        grid-template-columns: 1fr;
+    }
+    .card{
+        grid-row:2;
+        width: 80%;
+        grid-template-columns:1;
+        grid-template-rows: 100%;
+        border-radius: 0 0 0 0 ;
+    }
+    .card-footer{
+        padding-top: 10%;
+        display: grid;
+        margin: auto;
+        grid-template-rows:auto; 
+        grid-template-columns: 1fr;
+    padding-bottom: 5%;
+    }
+
 }
