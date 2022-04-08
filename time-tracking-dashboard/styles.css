@@ -1,5 +1,8 @@
 @import url("https://fonts.google.com/specimen/Rubik");
-
+*{
+    margin: 0;
+    border-width: 0;
+}
 .brs{
     border-radius: 10px;
 }
@@ -13,31 +16,30 @@
 .r-top >h5{
    color: white;
 }
-.icon-home{
-    display: flex; 
-    justify-content:end; 
-    width: 100%;
-    padding-right: 1%;
-    height: 100%;
-}
+
 .container{
-    display: grid;
+    display:inline-grid;
+    padding-left: 4%;
     grid-template-columns:repeat(4,1fr);
-    grid-template-rows:repeat(2,1fr);
+    grid-template-rows:repeat(1,1fr);
     gap: 1%;
 }
 .main-d{
-    background-color: hsl(235, 46%, 20%);  
+    background-color: hsl(235, 46%, 20%); 
+    display:inline-grid;
+    grid-template-rows:2;
 
 }
+
 body{
     width:80%;
     margin: auto;
     font-family: Rubik;
-    margin-top: 5%;
+    background-color:  hsl(226, 43%, 10%);
+    padding: 10%;
 }
 .jeimg{
-width: 100%;
+width: 30%;
 }
 .about{
     background-color:  hsl(246, 80%, 60%);
@@ -48,10 +50,12 @@ width: 100%;
 .duration{
     padding-left: 10%;
     color: white;
+    margin-top: 3%;
 }
 li{
     text-decoration: none;
     list-style: none;
+    padding-top: 5%;
 }
 li:hover{
     opacity: 80%;
@@ -59,30 +63,40 @@ li:hover{
 }
 
 /*--------------------------work------------------------*/
-.m-work{
-    background-color: hsl(43, 84%, 65%);
-    display: inline-grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr;
-    color: white;
-}
 .work>p{
     opacity:70%;
     font-size: 12px;
 }
+.m-work{
+    margin: 0;
+    background-color: hsl(43, 84%, 65%);
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:repeat(6,ifr);
+}
+.icon-home{
+    display: flex; 
+    justify-content:end; 
+    width: 100%;
+    padding-right: 1%;
+    grid-row:1/1;
+   
+}
 .work{
+    grid-row:2/7;
     background-color: hsl(235, 46%, 20%);
     padding-left: 13%;
     padding-right: 13%;
-    padding-top: 13%;
+    padding-top: 10%;
+    color: white;
 }
 .play{
     background-color: hsl(195, 74%, 62%) !important;
 }
 .icon{
 align-self: flex-end;
-height: 30%;
-float:right
+height: 50%;
+margin-left:5%;
 }
 .g-a{
     grid-column: 1; 
@@ -112,4 +126,22 @@ float:right
 .g-sc{
     grid-column:4;
     grid-row: 2;  
+}
+
+@media screen and (max-width:375px){
+  body{
+      
+  }
+    .container{
+       display: flex;
+       flex-direction: column;
+        gap: 1%;
+        width: 90% !important;
+    }
+}
+@media screen and( min-width:375px)  {
+    .container{
+       
+        gap: 1%;
+    }
 }
