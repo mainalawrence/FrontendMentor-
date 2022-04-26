@@ -1,0 +1,15 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon tsc app.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}

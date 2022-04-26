@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>TodoList</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container flex-c">
+            <form  id="addform" class="container-fluid flex-r">
+                <input id="inputs" class="form-input" type="text" placeholder="Enter Todo" value=""/>
+            <input id="submitbtn" class="btn btn-submit" type="submit" value="Submit"/>
+            </form>
+            <div class="container flex-c card">
+                <div class="container flex-c " id="todos">
+                    <div class="card container flex-r todo" >
+                        <input type="checkbox"/>
+                        <h3 class="tododetails">Wash the kid</h3>
+                        <input class="btn btn-update" type="button" value="Update"/>
+                        <input class="btn btn-delete" type="button" value="Remove"/>
+                    </div>
+                             
+                </div>
+            <hr>
+                <div id="complte-todo" class="container flex-c">
+                    <div class="card container flex-r todo" >
+                        <input type="checkbox" checked="false"/>
+                        <h3 class="tododetails">Wash the Car</h3>
+                        <input  id="edittodo" class="btn btn-update" type="button" value="Update"/>
+                        <input id="deletetodo"class="btn btn-delete" type="button" value="Remove"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="./index.js"></script>
+    
+</body>
+
+</html>

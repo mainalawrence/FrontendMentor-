@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    border-width: 0;
+}
+body{
+    background-color: gray;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    margin-top:1%;
+}
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    padding: 2% 2%;
+    margin: auto;
+    border-width: 2px !important;
+    border-color: white !important;
+    height: auto;
+    background-color:transparent;
+    margin-top: 1%;
+    border-radius: 10PX;
+    border-style: solid;
+}
+.todo{
+    background-color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 1%;
+}
+.todo:hover{
+    opacity: 90%;
+}
+checkbox{
+    margin-right: 2%;
+}
+.tododetails{
+    margin-right: 2%;
+}
+.input-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-input{
+    border-radius: 8px;
+    padding: 1% 0.5%;
+    margin-right: 1%;
+    border-color: white;
+    border-width: 2px;
+    background-color: transparent;
+}
+.form-input:hover{
+    background-color: white;
+    border-color: gray;
+}
+.btn{
+    border-radius: 10px;
+    text-align: center;
+    padding: 1% 2%;
+    border-width: 2px;
+    border-color: white;
+    opacity: 80%;
+}
+.btn:hover{
+    opacity: 100%;
+    color: white;
+}
+.btn-submit{
+    background-color: green !important;
+}
+.btn-delete{
+    background-color:red;
+    opacity: 100%;
+
+}
+.btn-delete:hover{
+    background-color:red;
+    opacity: 50%;
+
+}
+.btn-done{
+    background-color: rgb(43, 42, 42);
+}
+.flex-c{
+    flex-direction: column;
+}
+.flex-r{
+    flex-direction: row;
+}
+hr{
+    border-width: 2px;
+    border-style: solid;
+    width: 100%;
+    border-color: black;
+    margin: 4% 0px;
+}
