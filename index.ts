@@ -1,7 +1,9 @@
  interface todotype{
      id?:number,
+     title?:string,
      text?:string,
-     complete?:boolean
+     complete?:boolean,
+     date?:any
  }
 
 class Controller{
@@ -13,16 +15,17 @@ class Controller{
  input=document.getElementById("inputs") as HTMLInputElement;
 private todocontainer=document.getElementById("todos") as HTMLDivElement;
 private  Compltedtodocontainer=document.getElementById("complte-todo") as HTMLDivElement;
+private textarea=document.getElementById('textarea') as HTMLTextAreaElement;
+private dateinput=document.getElementById("dateinput") as HTMLElement;
 private form= (document.getElementById("addform") as HTMLFormElement ).addEventListener('submit',(e)=>{
     e.preventDefault();
-    if(this.input.value===""){
-        alert("ENTER A TO DO");
-        
+    if(this.input.value==="" ||this.textarea.value===""){
+        alert("ENTER A TODO"); 
     }else{
         this.UpdateView();
     }
  this.input.value='';
-
+this.textarea.value=""
 });
 
 public  UpdateView=()=>{
@@ -42,9 +45,16 @@ public  UpdateView=()=>{
 }
 public HandleDelete(id:string):void{
     let lastelm=this.todocontainer.lastChild;
+    let lastcompl=this.Compltedtodocontainer.lastChild
+
     while(lastelm){
         this.todocontainer.removeChild(lastelm);
         lastelm=this.todocontainer.lastChild;
+    }
+    while(lastcompl){
+        this.Compltedtodocontainer.removeChild(lastcompl);
+        lastcompl=this.Compltedtodocontainer.lastChild;1
+
     }
 this.todostateobject.DeleteTodo(parseInt(id)).map(item=>{
     if(item.complete){
@@ -56,11 +66,20 @@ this.todostateobject.DeleteTodo(parseInt(id)).map(item=>{
 }
 public HandleUpdate(id:number){
     let lastelm=this.todocontainer.lastChild;
+    let updatedTodo=window.prompt("Updat...") as string;
+    let lastcompl=this.Compltedtodocontainer.lastChild
+
+    
     while(lastelm){
         this.todocontainer.removeChild(lastelm);
         lastelm=this.todocontainer.lastChild;
     }
-this.todostateobject.DeleteTodo(id).map(item=>{
+    while(lastcompl){
+        this.Compltedtodocontainer.removeChild(lastcompl);
+        lastcompl=this.Compltedtodocontainer.lastChild;
+
+    }
+this.todostateobject.updateTodos(id,updatedTodo).map(item=>{
     if(item.complete){
         this.Compltedtodocontainer.appendChild(this.Todo.displayView(item));
     }else{
@@ -70,11 +89,17 @@ this.todostateobject.DeleteTodo(id).map(item=>{
 }
 public HandleCheckBox(id:number):void{
     let lastelm=this.todocontainer.lastChild;
+    let lastcompl=this.Compltedtodocontainer.lastChild
     while(lastelm){
         this.todocontainer.removeChild(lastelm);
         lastelm=this.todocontainer.lastChild;
     }
-this.todostateobject.DeleteTodo(id).map(item=>{
+    while(lastcompl){
+        this.Compltedtodocontainer.removeChild(lastcompl);
+        lastcompl=this.Compltedtodocontainer.lastChild;
+
+    }
+this.todostateobject.ChangeChecker(id).map(item=>{
     if(item.complete){
         this.Compltedtodocontainer.appendChild(this.Todo.displayView(item));
     }else{
@@ -120,6 +145,14 @@ class State{
       })
       return State.todoState;
   }
+  public ChangeChecker=(id:number):todotype[]=>{
+      return State.todoState.map(item=>{
+            if(item.id===id){
+                item.complete=!item.complete;
+            }
+            return item;
+      });
+  }
   public CreateTodo=(text?:string,complete?:boolean):todotype[]=>{
     let id:number=State.todoState.length+1;
     let todo:todotype={
@@ -128,7 +161,7 @@ class State{
         complete
     }
     State.todoState.push(todo);
-      return this.todoState;
+      return State.todoState;
   }
 }
 
@@ -143,6 +176,10 @@ class Model {
     {
         //the div container
         let div=document.createElement('div');
+        let btnDiv=document.createElement('div');
+        let time=document.createElement('p');
+        time.innerText=`${todo.date}`;
+        btnDiv.className='container-fluid flex-r btn-div';
         let descp=document.createElement('h3');
         descp.innerText=`${todo.text}`;
         div.className="card container flex-r todo";
@@ -153,6 +190,7 @@ class Model {
         let btnupdate=document.createElement('button');
         btnupdate.innerText="Edit"
         btnupdate.className='btn btn-update';
+        
         btndel.addEventListener('click',()=> {
             let con=new Controller;
             con.HandleDelete(div.id)
@@ -164,15 +202,22 @@ class Model {
     });
         let checkbox=document.createElement('input');
         checkbox.type='checkbox';
+        checkbox.checked=false;
         checkbox.addEventListener('change',()=>{
             let con=new Controller;
-            console.log("check box changed :"+div.id);
             con.HandleCheckBox(parseInt(div.id));
+            checkbox.checked =!checkbox.checked;
+            console.log(checkbox.checked);
+            
+            
         })
         div.appendChild(checkbox);
         div.appendChild(descp);
-        div.appendChild(btnupdate);
-        div.appendChild(btndel);
+        btnDiv.appendChild(btnupdate);
+        btnDiv.appendChild(btndel);
+        div.appendChild(btnDiv);
+        div.appendChild(time);
+        
         return div;
     }
 }

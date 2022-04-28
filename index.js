@@ -6,15 +6,18 @@ var Controller = /** @class */ (function () {
         this.input = document.getElementById("inputs");
         this.todocontainer = document.getElementById("todos");
         this.Compltedtodocontainer = document.getElementById("complte-todo");
+        this.textarea = document.getElementById('textarea');
+        this.dateinput = document.getElementById("dateinput");
         this.form = document.getElementById("addform").addEventListener('submit', function (e) {
             e.preventDefault();
-            if (_this.input.value === "") {
-                alert("ENTER A TO DO");
+            if (_this.input.value === "" || _this.textarea.value === "") {
+                alert("ENTER A TODO");
             }
             else {
                 _this.UpdateView();
             }
             _this.input.value = '';
+            _this.textarea.value = "";
         });
         this.UpdateView = function () {
             var lastelm = _this.todocontainer.lastChild;
@@ -35,9 +38,14 @@ var Controller = /** @class */ (function () {
     Controller.prototype.HandleDelete = function (id) {
         var _this = this;
         var lastelm = this.todocontainer.lastChild;
+        var lastcompl = this.Compltedtodocontainer.lastChild;
         while (lastelm) {
             this.todocontainer.removeChild(lastelm);
             lastelm = this.todocontainer.lastChild;
+        }
+        while (lastcompl) {
+            this.Compltedtodocontainer.removeChild(lastcompl);
+            lastcompl = this.Compltedtodocontainer.lastChild;
         }
         this.todostateobject.DeleteTodo(parseInt(id)).map(function (item) {
             if (item.complete) {
@@ -51,11 +59,17 @@ var Controller = /** @class */ (function () {
     Controller.prototype.HandleUpdate = function (id) {
         var _this = this;
         var lastelm = this.todocontainer.lastChild;
+        var updatedTodo = window.prompt("Updat...");
+        var lastcompl = this.Compltedtodocontainer.lastChild;
         while (lastelm) {
             this.todocontainer.removeChild(lastelm);
             lastelm = this.todocontainer.lastChild;
         }
-        this.todostateobject.DeleteTodo(id).map(function (item) {
+        while (lastcompl) {
+            this.Compltedtodocontainer.removeChild(lastcompl);
+            lastcompl = this.Compltedtodocontainer.lastChild;
+        }
+        this.todostateobject.updateTodos(id, updatedTodo).map(function (item) {
             if (item.complete) {
                 _this.Compltedtodocontainer.appendChild(_this.Todo.displayView(item));
             }
@@ -67,11 +81,16 @@ var Controller = /** @class */ (function () {
     Controller.prototype.HandleCheckBox = function (id) {
         var _this = this;
         var lastelm = this.todocontainer.lastChild;
+        var lastcompl = this.Compltedtodocontainer.lastChild;
         while (lastelm) {
             this.todocontainer.removeChild(lastelm);
             lastelm = this.todocontainer.lastChild;
         }
-        this.todostateobject.DeleteTodo(id).map(function (item) {
+        while (lastcompl) {
+            this.Compltedtodocontainer.removeChild(lastcompl);
+            lastcompl = this.Compltedtodocontainer.lastChild;
+        }
+        this.todostateobject.ChangeChecker(id).map(function (item) {
             if (item.complete) {
                 _this.Compltedtodocontainer.appendChild(_this.Todo.displayView(item));
             }
@@ -84,13 +103,8 @@ var Controller = /** @class */ (function () {
 }());
 var State = /** @class */ (function () {
     function State() {
-        var _this = this;
-        this.todoState = [];
-        this.getTodos = function () {
-            return _this.todoState;
-        };
         this.updateTodos = function (id, text, complete) {
-            return _this.todoState.map(function (item) {
+            return State.todoState.map(function (item) {
                 if (item.id === id) {
                     if (typeof complete !== 'undefined') {
                         item.complete = complete;
@@ -103,25 +117,34 @@ var State = /** @class */ (function () {
             });
         };
         this.DeleteTodo = function (id) {
-            _this.todoState = _this.todoState.filter(function (item) {
+            State.todoState = State.todoState.filter(function (item) {
                 if (item.id !== id) {
                     console.log(item.text);
                     return item;
                 }
             });
-            return _this.todoState;
+            return State.todoState;
+        };
+        this.ChangeChecker = function (id) {
+            return State.todoState.map(function (item) {
+                if (item.id === id) {
+                    item.complete = !item.complete;
+                }
+                return item;
+            });
         };
         this.CreateTodo = function (text, complete) {
-            var id = _this.todoState.length + 1;
+            var id = State.todoState.length + 1;
             var todo = {
                 id: id,
                 text: text,
                 complete: complete
             };
-            _this.todoState.push(todo);
-            return _this.todoState;
+            State.todoState.push(todo);
+            return State.todoState;
         };
     }
+    State.todoState = [];
     return State;
 }());
 var Model = /** @class */ (function () {
@@ -154,10 +177,12 @@ var Model = /** @class */ (function () {
         });
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.checked = false;
         checkbox.addEventListener('change', function () {
             var con = new Controller;
-            console.log("check box changed :" + div.id);
             con.HandleCheckBox(parseInt(div.id));
+            checkbox.checked = !checkbox.checked;
+            console.log(checkbox.checked);
         });
         div.appendChild(checkbox);
         div.appendChild(descp);

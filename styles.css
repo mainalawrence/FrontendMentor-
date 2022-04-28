@@ -54,7 +54,7 @@ checkbox{
 }
 .form-input{
     border-radius: 8px;
-    padding: 1% 0.5%;
+    padding: 3% 0.5%;
     margin-right: 1%;
     border-color: white;
     border-width: 2px;
@@ -65,9 +65,9 @@ checkbox{
     border-color: gray;
 }
 .btn{
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
-    padding: 1% 2%;
+    padding: 3% 2%;
     border-width: 2px;
     border-color: white;
     opacity: 80%;
@@ -104,4 +104,64 @@ hr{
     width: 100%;
     border-color: black;
     margin: 4% 0px;
+}
+#date{
+padding: 3% 0.5%;
+margin: 0.5%;
+text-align: center;
+border-width:1px;
+border-radius:10px;
+background-color: transparent;
+opacity: 100%;
+
+}
+#date:hover{
+    opacity: 80%;
+    background-color: white;
+}
+#addform{
+    width: 50%;
+    margin-top: 0%;
+    margin-right: 10%;
+    padding:1% 2%;
+    justify-content: center;
+    margin: auto;
+}
+#addform>input{
+    margin-bottom: 2%;
+}
+#addform>textarea{
+    margin-bottom: 2%;
+}
+textarea{
+    border-radius: 10px;
+    height: 40%;
+}
+#submitbtn{
+    margin-top: 3%;
+}
+#cancelbtn{
+    width: 40%;
+}
+#submitbtn{
+    width: 40%;
+}
+.done-card{
+    margin-left: 0;
+    width: 80%;
+    margin: auto;
+}
+.todo>h6{
+margin: 2% 0;
+}
+.todo>h3{
+margin: 5% 0;
+    
+}
+.btn-div{
+    justify-content: space-evenly;
+}
+.flex-flow{
+    display: flex;
+    flex-flow: wrap;
 }

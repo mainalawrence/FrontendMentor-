@@ -9,12 +9,33 @@
 </head>
 <body>
     <div class="container">
-        <div class="container flex-c">
-            <form  id="addform" class="container-fluid flex-r">
-                <input id="inputs" class="form-input" type="text" placeholder="Enter Todo" value=""/>
-            <input id="submitbtn" class="btn btn-submit" type="submit" value="Submit"/>
+        <div class="container-fluid flex-r">
+           <div class="container flex-c">
+            <form  id="addform" class="container-fluid flex-c">
+                <input id="inputs" class="form-input" type="text" placeholder="     Enter title..." value=""/>
+                <textarea rows="10" id="textarea" class="textarea">
+                </textarea> 
+                <input id="dateinput" type="date"/> 
+                <div style="display: flex;justify-content: space-between;" class="container flex-r">
+                <input id="submitbtn" class="btn btn-submit" type="submit" value="Submit"/>     
+                <input id="cancelbtn" class="btn btn-submit" type="submit" value="Cancel"/>     
+                </div>
             </form>
-            <div class="container flex-c card">
+            <div class="conatiner-fluid  card done-card flex-flow">
+                <div id="complte-todo" class="container flex-flow">
+                    <div class="card container flex-c todo" >
+                        <h3>Title</h3>
+                        <h6class="tododetails">Wash the Car</h6>
+                        <div style="justify-content: space-evenly;" class="container-fluid flex-r">
+                        <input  class="btn btn-update" type="button" value="Update"/>
+                        <input  class="btn btn-delete" type="button" value="Remove"/>
+                        </div>
+                        <p style="margin:2% 0 ;">on time</p>
+                    </div>
+                </div>
+            </div>
+           </div>
+            <div class="container flex-c  card">
                 <div class="container flex-c " id="todos">
                     <div class="card container flex-r todo" >
                         <input type="checkbox"/>
@@ -24,15 +45,7 @@
                     </div>
                              
                 </div>
-            <hr>
-                <div id="complte-todo" class="container flex-c">
-                    <div class="card container flex-r todo" >
-                        <input type="checkbox" checked="false"/>
-                        <h3 class="tododetails">Wash the Car</h3>
-                        <input  id="edittodo" class="btn btn-update" type="button" value="Update"/>
-                        <input id="deletetodo"class="btn btn-delete" type="button" value="Remove"/>
-                    </div>
-                </div>
+             
             </div>
         </div>
     </div>
